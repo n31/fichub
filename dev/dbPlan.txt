@@ -1,0 +1,46 @@
+TABLE USERS
+__________________________________________________________________________
+| ID | NAME | EMAIL | PASSWORD | CONF | ADMIM | AVATAR | LANGUAGE | MODE |
+--------------------------------------------------------------------------
+|int |vc(20)|vc(50) |text      |def 0 |def 0  |text    |def 0 (en)|def 0 |
+
+
+TABLE BOOKS
+_____________________________________________________________
+| ID | USER | NAME | ABOUT | GENRE | TAGS | UPDATE | RATING |
+-------------------------------------------------------------
+|int |int   |vc(20)|vc(140)|int    | text |date    |int     |
+
+
+TABLE RATINGS
+______________________
+| BOOK | USER | RATE |
+----------------------
+|int   |int   |int   |
+
+
+TABLE COMMENTS
+_________________________
+| BOOK | USER | COMMENT |
+-------------------------
+|int   |int   |text     |
+
+
+TABLE CHAPTERS
+___________________________________
+| BOOK | NO | NAME | TEXT | IMAGE |
+-----------------------------------
+|int   |int |vc(20)|text  |text   |
+
+
+TABLE LIKES
+_________________________
+| BOOK | CHAPTER | USER |
+-------------------------
+|int   |int      |int   |
+
+
+
+
+
+
