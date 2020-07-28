@@ -1,0 +1,3 @@
+[submodule "client-fichub"]
+	path = client-fichub
+	url = https://github.com/n31/client-fichub
