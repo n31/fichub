@@ -1,7 +1,8 @@
 const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
-var cors = require('cors')
+const cors = require('cors')
+const config = require('./config')
 
 const router = require('./router')
 
@@ -14,4 +15,4 @@ app.use(morgan('combined'))
 
 router(app)
 
-app.listen(process.env.PORT || 4000, () => console.log('Listening....'))
+app.listen(config.port,/* config.host, */() => console.log('Listening....'))

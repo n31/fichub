@@ -1,13 +1,13 @@
 const User = require('../models/user')
-//const config = require('../config')
+const config = require('../config')
 const JwtStrategy = require('passport-jwt').Strategy
 const ExtractJwt = require('passport-jwt').ExtractJwt
 const LocalStrategy = require('passport-local')
 
 const localOptions = {usernameField: 'email' }
 
-const localLogin = new LocalStrategy(localOptions, (login, password, done) => {
-  User.findOne({where: {email: login}}).then(user => {
+const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
+  User.findOne({where: {email: email, confirmed: 1}}).then(user => {
     if (!user) return done(null, false)
 
     user.comparePassword(password, (err, isMatch) => {
@@ -20,7 +20,7 @@ const localLogin = new LocalStrategy(localOptions, (login, password, done) => {
 
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromHeader('authorization'),
-  secretOrKey: 'secret shhh...' //config.secret,
+  secretOrKey: config.secret,
 }
 
 const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {

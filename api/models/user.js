@@ -1,9 +1,10 @@
 const bcrypt = require('bcrypt-nodejs')
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize('mysql://bc95ef36a6368d:ed521b8d@eu-cdbr-west-03.cleardb.net/heroku_320ea454d13588a');
+const config = require('../config')
+const sequelize = new Sequelize(config.db)
 
 const User = sequelize.define('user', {
-  id: {
+    id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true
@@ -11,9 +12,28 @@ const User = sequelize.define('user', {
     name: Sequelize.TEXT,
     email: Sequelize.TEXT,
     password: Sequelize.TEXT,
-    regDate: Sequelize.DATE,
-    lastLog: Sequelize.DATE,
-    status: Sequelize.INTEGER
+    confirmed: {
+      type: Sequelize.INTEGER,
+      defaultValue: 0
+    },
+    confKey: Sequelize.TEXT,
+    admin: {
+      type: Sequelize.INTEGER,
+      defaultValue: 0
+    },
+    avatar: {
+      type: Sequelize.TEXT,
+      defaultValue: config.defaultAvatar
+    },
+    language: {
+      type: Sequelize.INTEGER,
+      defaultValue: 0
+    },
+    mode: {
+      type: Sequelize.INTEGER,
+      defaultValue: 0
+    },
+    about: Sequelize.TEXT
 },{
   timestamps: false,
   hooks: {

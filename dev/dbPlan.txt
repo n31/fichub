@@ -1,15 +1,17 @@
+TODO: 
+
 TABLE USERS
-__________________________________________________________________________
-| ID | NAME | EMAIL | PASSWORD | CONF | ADMIM | AVATAR | LANGUAGE | MODE |
---------------------------------------------------------------------------
-|int |vc(20)|vc(50) |text      |def 0 |def 0  |text    |def 0 (en)|def 0 |
+_________________________________________________________________________________________________
+| ID | NAME | EMAIL | PASSWORD | CONFIRMED | CONFKEY | ADMIM | AVATAR | LANGUAGE | MODE | ABOUT |
+-------------------------------------------------------------------------------------------------
+|int |vc(20)|vc(50) |text      |def 0      |text     |def 0  |text    |def 0 (en)|def 0 |text   |
 
 
 TABLE BOOKS
-_____________________________________________________________
-| ID | USER | NAME | ABOUT | GENRE | TAGS | UPDATE | RATING |
--------------------------------------------------------------
-|int |int   |vc(20)|vc(140)|int    | text |date    |int     |
+__________________________________________________________
+| ID | USER | NAME | ABOUT | GENRE | TAGS | UPD | RATING |
+----------------------------------------------------------
+|int |text  |vc(20)|vc(140)|int    | text |date |def 0   |
 
 
 TABLE RATINGS
@@ -27,10 +29,10 @@ _________________________
 
 
 TABLE CHAPTERS
-___________________________________
-| BOOK | NO | NAME | TEXT | IMAGE |
------------------------------------
-|int   |int |vc(20)|text  |text   |
+____________________________________________
+| BOOK | NO | NAME | STORY | IMAGE | LIKES |
+--------------------------------------------
+|int   |int |vc(20)|text  |text    |def 0  |
 
 
 TABLE LIKES
